@@ -3,6 +3,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>Latest</LangVersion>
+        <WarningsAsErrors>true</WarningsAsErrors>
     </PropertyGroup>
 
     <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Test'))">
