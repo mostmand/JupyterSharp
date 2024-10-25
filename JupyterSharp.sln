@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JupyterSharp.Integration.Test", "test\JupyterSharp.Integration.Test\JupyterSharp.Integration.Test.csproj", "{8069669B-BBEE-46E0-96EC-30C18129789C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,9 +31,14 @@ Global
 		{D6B83F81-56CD-4350-8072-6FA74C919F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6B83F81-56CD-4350-8072-6FA74C919F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6B83F81-56CD-4350-8072-6FA74C919F31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8069669B-BBEE-46E0-96EC-30C18129789C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8069669B-BBEE-46E0-96EC-30C18129789C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8069669B-BBEE-46E0-96EC-30C18129789C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8069669B-BBEE-46E0-96EC-30C18129789C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C54C2734-5719-4713-B181-FBF784748E19} = {CE8FC350-586E-4477-8053-CCC3A9D3090D}
 		{D6B83F81-56CD-4350-8072-6FA74C919F31} = {2C5939A2-9B85-46EA-B3C9-B0A4C162540C}
+		{8069669B-BBEE-46E0-96EC-30C18129789C} = {2C5939A2-9B85-46EA-B3C9-B0A4C162540C}
 	EndGlobalSection
 EndGlobal
