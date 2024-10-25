@@ -6,6 +6,6 @@ namespace JupyterSharp;
 public interface IJupyterOptionsBuilder
 {
     IJupyterOptionsBuilder WithHost(Uri host);
-    IJupyterOptionsBuilder WithApiKey(string apiKey);
+    IJupyterOptionsBuilder WithToken(string token);
     IJupyterOptions Build();
 }

@@ -1,6 +1,7 @@
-﻿namespace JupyterSharp.Client;
+﻿using JupyterSharp.Abstraction;
 
-internal sealed class JupyterClient : IJupyterClient
+namespace JupyterSharp.Client;
+
+public sealed class JupyterClient : IJupyterClient
 {
-    
 }

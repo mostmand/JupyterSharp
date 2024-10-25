@@ -8,7 +8,7 @@ internal sealed class JupyterOptionsBuilder : IJupyterOptionsBuilder
 {
     private readonly IJupyterOptionsValidator _jupyterOptionsValidator;
     private Uri? _host;
-    private string? _apiKey;
+    private string? _token;
 
     private JupyterOptionsBuilder(IJupyterOptionsValidator jupyterOptionsValidator)
     {
@@ -27,16 +27,16 @@ internal sealed class JupyterOptionsBuilder : IJupyterOptionsBuilder
         return this;
     }
 
-    public IJupyterOptionsBuilder WithApiKey(string apiKey)
+    public IJupyterOptionsBuilder WithToken(string token)
     {
-        _apiKey = apiKey;
+        _token = token;
 
         return this;
     }
 
     public IJupyterOptions Build()
     {
-        var result = new JupyterOptions { Host = _host!, ApiKey = _apiKey! };
+        var result = new JupyterOptions { Host = _host!, Token = _token! };
         
         ValidateJupyterOptions(result);
 

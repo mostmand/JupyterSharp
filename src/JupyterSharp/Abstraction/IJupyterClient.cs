@@ -1,4 +1,4 @@
-﻿namespace JupyterSharp;
+﻿namespace JupyterSharp.Abstraction;
 
 public interface IJupyterClient
 {

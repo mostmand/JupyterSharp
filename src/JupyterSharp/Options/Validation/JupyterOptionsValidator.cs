@@ -11,15 +11,15 @@ internal sealed class JupyterOptionsValidator : IJupyterOptionsValidator
     {
         var errors = new List<IJupyterConfigurationError>();
         ValidateHost(jupyterOptions, errors);
-        ValidateApiKey(jupyterOptions, errors);
+        ValidateToken(jupyterOptions, errors);
         return errors;
     }
 
-    private static void ValidateApiKey(IJupyterOptions jupyterOptions, List<IJupyterConfigurationError> errors)
+    private static void ValidateToken(IJupyterOptions jupyterOptions, List<IJupyterConfigurationError> errors)
     {
-        if (string.IsNullOrWhiteSpace(jupyterOptions.ApiKey))
+        if (string.IsNullOrWhiteSpace(jupyterOptions.Token))
         {
-            errors.Add(ApiKeyNotProvidedError.Instance);
+            errors.Add(TokenNotProvidedError.Instance);
         }
     }
 

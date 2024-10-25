@@ -32,15 +32,15 @@ public sealed class JupyterOptionsValidatorTests
     [InlineData(null)]
     [InlineData("")]
     [InlineData("  ")]
-    public void Validate_ShouldIncludeApiKeyNotProvidedError_WhenApiKeyIsNullOrWhiteSpace(string? apiKey)
+    public void Validate_ShouldIncludeTokenNotProvidedError_WhenTokenIsNullOrWhiteSpace(string? token)
     {
         // Arrange
-        var options = new JupyterOptions { ApiKey = apiKey! };
+        var options = new JupyterOptions { Token = token! };
 
         // Act
         var actual = _sut.Validate(options);
 
         // Assert
-        actual.Should().Contain(error => error is ApiKeyNotProvidedError);
+        actual.Should().Contain(error => error is TokenNotProvidedError);
     }
 }

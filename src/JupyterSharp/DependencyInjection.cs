@@ -1,4 +1,5 @@
-﻿using JupyterSharp.Client;
+﻿using JupyterSharp.Abstraction;
+using JupyterSharp.Client;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace JupyterSharp;
