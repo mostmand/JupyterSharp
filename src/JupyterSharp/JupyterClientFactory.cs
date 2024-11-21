@@ -1,54 +1,12 @@
 ﻿using System;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+using JupyterSharp.Abstraction;
 
 namespace JupyterSharp;
 
-public sealed class JupyterClientFactory : IDisposable, IAsyncDisposable
+public static class JupyterClientFactory
 {
-    private readonly IServiceProvider _serviceProvider;
-    private readonly bool _disposeServiceProvider;
-
-    internal JupyterClientFactory(IServiceProvider serviceProvider)
+    public static IJupyterClient Create(Action<IJupyterOptionsBuilder> options)
     {
-        _serviceProvider = serviceProvider;
-    }
-
-    public JupyterClientFactory(Action<IJupyterOptionsBuilder> options)
-    {
-        var serviceCollection = new ServiceCollection();
-        serviceCollection.AddJupyterClient(options);
-        _serviceProvider = serviceCollection.BuildServiceProvider();
-        _disposeServiceProvider = true;
-    }
-
-    public void Dispose()
-    {
-        if (!_disposeServiceProvider)
-        {
-            return;
-        }
-
-        if (_serviceProvider is not IDisposable disposable)
-        {
-            return;
-        }
-
-        disposable.Dispose();
-    }
-
-    public async ValueTask DisposeAsync()
-    {
-        if (!_disposeServiceProvider)
-        {
-            return;
-        }
-
-        if (_serviceProvider is not IAsyncDisposable asyncDisposable)
-        {
-            return;
-        }
-
-        await asyncDisposable.DisposeAsync().ConfigureAwait(false);
+        throw new NotImplementedException();
     }
 }

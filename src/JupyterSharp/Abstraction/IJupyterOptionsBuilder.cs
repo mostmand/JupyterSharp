@@ -1,7 +1,7 @@
 ﻿using System;
 using JupyterSharp.Options;
 
-namespace JupyterSharp;
+namespace JupyterSharp.Abstraction;
 
 public interface IJupyterOptionsBuilder
 {

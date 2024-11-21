@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using JupyterSharp.Abstraction;
 using JupyterSharp.Options.Validation;
 
 namespace JupyterSharp.Options;
