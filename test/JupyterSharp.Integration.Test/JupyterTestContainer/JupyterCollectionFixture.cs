@@ -17,7 +17,7 @@ public sealed class JupyterCollectionFixture : ICollectionFixture<JupyterCollect
     public async Task InitializeAsync()
     {
         _container = new ContainerBuilder()
-            .WithImage("jupyter/scipy-notebook:latest")
+            .WithImage("quay.io/jupyter/scipy-notebook")
             .WithPortBinding(8888, true)
             .WithWaitStrategy(Wait.ForUnixContainer()
                 .UntilPortIsAvailable(8888)
