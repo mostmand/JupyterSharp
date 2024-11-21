@@ -4,6 +4,7 @@ namespace JupyterSharp.Options;
 
 public interface IJupyterOptions
 {
-    public Uri Host { get; }
+    public string Host { get; }
+    public int Port { get; }
     public string Token { get; }
 }

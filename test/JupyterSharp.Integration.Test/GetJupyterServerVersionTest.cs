@@ -19,7 +19,11 @@ public class GetJupyterServerVersionTest
     [Fact]
     public async Task GetJupyterServerVersion_ShouldReturnJupyterServerVersion()
     {
-        var jupyterClient = JupyterClientFactory.Create(builder => builder.WithHost(new Uri($"http://{_connectionInfo.Host}:{_connectionInfo.Port}/")));
+        var jupyterClient = JupyterClientFactory.Create(builder => builder
+            .WithHost(_connectionInfo.Host)
+            .WithPort(_connectionInfo.Port)
+            .WithToken(_connectionInfo.Token)
+        );
 
         var versionInfo = await jupyterClient.GetVersionAsync();
 

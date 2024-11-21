@@ -11,16 +11,9 @@ internal sealed class JupyterOptionsValidator : IJupyterOptionsValidator
     {
         var errors = new List<IJupyterConfigurationError>();
         ValidateHost(jupyterOptions, errors);
+        ValidatePort(jupyterOptions, errors);
         ValidateToken(jupyterOptions, errors);
         return errors;
-    }
-
-    private static void ValidateToken(IJupyterOptions jupyterOptions, List<IJupyterConfigurationError> errors)
-    {
-        if (string.IsNullOrWhiteSpace(jupyterOptions.Token))
-        {
-            errors.Add(TokenNotProvidedError.Instance);
-        }
     }
 
     private static void ValidateHost(IJupyterOptions jupyterOptions, List<IJupyterConfigurationError> errors)
@@ -28,6 +21,22 @@ internal sealed class JupyterOptionsValidator : IJupyterOptionsValidator
         if (jupyterOptions.Host is null)
         {
             errors.Add(NullHostError.Instance);
+        }
+    }
+    
+    private void ValidatePort(IJupyterOptions jupyterOptions, List<IJupyterConfigurationError> errors)
+    {
+        if (jupyterOptions.Port == 0)
+        {
+            errors.Add(PortIsNotProvidedError.Instance);
+        }
+    }
+
+    private static void ValidateToken(IJupyterOptions jupyterOptions, List<IJupyterConfigurationError> errors)
+    {
+        if (string.IsNullOrWhiteSpace(jupyterOptions.Token))
+        {
+            errors.Add(TokenNotProvidedError.Instance);
         }
     }
 }

@@ -43,4 +43,17 @@ public sealed class JupyterOptionsValidatorTests
         // Assert
         actual.Should().Contain(error => error is TokenNotProvidedError);
     }
+    
+    [Fact]
+    public void Validate_ShouldIncludePortNotProvidedError_WhenPortIsNotProvided()
+    {
+        // Arrange
+        var options = new JupyterOptions();
+
+        // Act
+        var actual = _sut.Validate(options);
+
+        // Assert
+        actual.Should().Contain(error => error is PortIsNotProvidedError);
+    }
 }

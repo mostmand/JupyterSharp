@@ -5,7 +5,8 @@ namespace JupyterSharp.Abstraction;
 
 public interface IJupyterOptionsBuilder
 {
-    IJupyterOptionsBuilder WithHost(Uri host);
+    IJupyterOptionsBuilder WithHost(string host);
+    IJupyterOptionsBuilder WithPort(int port);
     IJupyterOptionsBuilder WithToken(string token);
     IJupyterOptions Build();
 }

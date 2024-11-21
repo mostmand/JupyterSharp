@@ -8,8 +8,9 @@ namespace JupyterSharp.Options;
 internal sealed class JupyterOptionsBuilder : IJupyterOptionsBuilder
 {
     private readonly IJupyterOptionsValidator _jupyterOptionsValidator;
-    private Uri? _host;
+    private string? _host;
     private string? _token;
+    private int? _port;
 
     private JupyterOptionsBuilder(IJupyterOptionsValidator jupyterOptionsValidator)
     {
@@ -21,9 +22,16 @@ internal sealed class JupyterOptionsBuilder : IJupyterOptionsBuilder
         return new JupyterOptionsBuilder(jupyterOptionsValidator);
     }
 
-    public IJupyterOptionsBuilder WithHost(Uri host)
+    public IJupyterOptionsBuilder WithHost(string host)
     {
         _host = host;
+
+        return this;
+    }
+
+    public IJupyterOptionsBuilder WithPort(int port)
+    {
+        _port = port;
 
         return this;
     }
@@ -37,7 +45,12 @@ internal sealed class JupyterOptionsBuilder : IJupyterOptionsBuilder
 
     public IJupyterOptions Build()
     {
-        var result = new JupyterOptions { Host = _host!, Token = _token! };
+        var result = new JupyterOptions
+        {
+            Host = _host!,
+            Port = _port!.Value,
+            Token = _token!
+        };
         
         ValidateJupyterOptions(result);
 
