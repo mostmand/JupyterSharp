@@ -36,7 +36,7 @@ public sealed class JupyterCollectionFixture : ICollectionFixture<JupyterCollect
 
     private async Task<string> GetTokenAsync()
     {
-        var (stdout, stderr) = await _container!.GetLogsAsync();
+        var (_, stderr) = await _container!.GetLogsAsync();
         var token = stderr.Split(["\n", "\r\n"], StringSplitOptions.RemoveEmptyEntries)
             .FirstOrDefault(line => line.Contains("token="))?
             .Split('=')
