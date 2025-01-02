@@ -4,6 +4,8 @@ using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using JupyterSharp.Abstraction;
+using JupyterSharp.Client.Content.Post;
+using JupyterSharp.Client.Content.Put;
 using JupyterSharp.Dto;
 
 namespace JupyterSharp.Client;
@@ -20,5 +22,15 @@ internal sealed class JupyterClient : IJupyterClient
     public Task<VersionInfo> GetVersionAsync(CancellationToken cancellationToken = default)
     {
         return _httpClient.GetFromJsonAsync<VersionInfo>("/api", cancellationToken)!;
+    }
+
+    public Task<PostContentResponse> PostContentAsync(PostContentRequest postContentRequest, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<PutContentResponse> PutContentAsync(PutContentRequest postContentRequest, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
     }
 }
