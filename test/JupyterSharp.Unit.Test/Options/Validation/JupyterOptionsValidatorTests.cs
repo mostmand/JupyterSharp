@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using AwesomeAssertions;
 using JupyterSharp.Options;
 using JupyterSharp.Options.Validation;
 using JupyterSharp.Options.Validation.Errors;

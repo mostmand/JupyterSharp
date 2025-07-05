@@ -14,7 +14,7 @@ public sealed class JupyterCollectionFixture : ICollectionFixture<JupyterCollect
     
     public JupyterConnectionInfo? ConnectionInfo { get; private set; }
     
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         _container = new ContainerBuilder()
             .WithImage("quay.io/jupyter/scipy-notebook")
@@ -50,7 +50,7 @@ public sealed class JupyterCollectionFixture : ICollectionFixture<JupyterCollect
         return token;
     }
 
-    public async Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         if (_container == null)
         {

@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using FluentAssertions;
+using AwesomeAssertions;
 using JupyterSharp.Integration.Test.JupyterTestContainer;
 using Xunit;
 
