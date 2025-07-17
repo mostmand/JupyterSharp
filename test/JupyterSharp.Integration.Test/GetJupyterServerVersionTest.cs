@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using AwesomeAssertions;
 using JupyterSharp.Integration.Test.JupyterTestContainer;
 using Xunit;
@@ -14,7 +15,7 @@ public class GetJupyterServerVersionTest : JupyterIntegrationTest
     [Fact]
     public async Task GetJupyterServerVersion_ShouldReturnJupyterServerVersion()
     {
-        var versionInfo = await JupyterClient.GetVersionAsync();
+        var versionInfo = await JupyterClient.GetVersionAsync(CancellationToken.None);
 
         versionInfo.Version.Should().NotBeEmpty();
     }
