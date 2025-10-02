@@ -1,10 +1,17 @@
-﻿namespace JupyterSharp.Client.Content.Put;
+﻿using System.Text.Json.Serialization;
+
+namespace JupyterSharp.Client.Content.Put;
 
 public record PutContentRequest
 {
     public required string Path { get; init; }
-    public required string Content { get; init; }
-    public required string Format { get; init; }
-    public required string Name { get; init; }
+    
+    [JsonPropertyName("content")]
+    public object? Content { get; init; }
+    
+    [JsonPropertyName("format")]
+    public string? Format { get; init; }
+    
+    [JsonPropertyName("type")]
     public string? Type { get; init; }
 }

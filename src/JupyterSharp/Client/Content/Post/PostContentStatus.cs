@@ -4,5 +4,6 @@ public enum PostContentStatus
 {
     Created,
     BadRequest,
+    Forbidden,
     NotFound
 }
