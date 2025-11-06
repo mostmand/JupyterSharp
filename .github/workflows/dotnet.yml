@@ -56,8 +56,8 @@ jobs:
         run: |
           export PATH="$PATH:~/.dotnet/tools"
           dotnet sonarscanner begin \
-            /k:"<your_project_key>" \
-            /o:"<your_org_key>" \
+            /k:"mostmand_JupyterSharp" \
+            /o:"mostmand" \
             /d:sonar.host.url="https://sonarcloud.io" \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
             /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" \
