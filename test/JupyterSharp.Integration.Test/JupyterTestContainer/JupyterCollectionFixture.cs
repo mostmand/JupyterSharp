@@ -16,11 +16,12 @@ public sealed class JupyterCollectionFixture : ICollectionFixture<JupyterCollect
     
     public async ValueTask InitializeAsync()
     {
+        const int containerPort = 8888;
         _container = new ContainerBuilder()
             .WithImage("quay.io/jupyter/scipy-notebook")
-            .WithPortBinding(8888, true)
+            .WithPortBinding(containerPort, true)
             .WithWaitStrategy(Wait.ForUnixContainer()
-                .UntilPortIsAvailable(8888)
+                .UntilInternalTcpPortIsAvailable(containerPort)
                 .UntilMessageIsLogged("To access the server, open this file in a browser:"))
             .Build();
         
@@ -29,7 +30,7 @@ public sealed class JupyterCollectionFixture : ICollectionFixture<JupyterCollect
         ConnectionInfo = new JupyterConnectionInfo
         {
             Host = _container.Hostname,
-            Port = _container.GetMappedPublicPort(8888),
+            Port = _container.GetMappedPublicPort(containerPort),
             Token = await GetTokenAsync()
         };
     }
