@@ -62,15 +62,23 @@ jobs:
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
             /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" \
             /d:sonar.coverage.exclusions="**/Migrations/**"
-
+      
       - name: Restore dependencies
         run: dotnet restore
-
+      
       - name: Build
         run: dotnet build --no-restore --configuration Release
-
-      - name: Test with coverage
-        run: dotnet test --no-build --configuration Release --verbosity normal --collect:"XPlat Code Coverage"
+      
+      # ✅ Run tests and produce OpenCover XML
+      - name: Test with coverage (OpenCover)
+        run: |
+          dotnet tool install --global coverlet.console
+          export PATH="$PATH:~/.dotnet/tools"
+          coverlet ./tests/<YourTestProjectName>/bin/Release/net8.0/<YourTestProjectName>.dll \
+            --target "dotnet" \
+            --targetargs "test ./tests/<YourTestProjectName>/<YourTestProjectName>.csproj --no-build --configuration Release" \
+            --format opencover \
+            --output ./coverage.opencover.xml
 
       - name: End SonarCloud analysis
         if: always()
