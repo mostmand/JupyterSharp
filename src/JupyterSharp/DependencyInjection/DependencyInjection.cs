@@ -18,7 +18,12 @@ public static class DependencyInjection
         options?.Invoke(optionsBuilder);
         var jupyterOptions = optionsBuilder.Build();
         
-        services.AddHttpClient(key, client =>client.BaseAddress = new Uri($"http://{jupyterOptions.Host}:{jupyterOptions.Port}"));
+        services.AddHttpClient(key, client =>
+        {
+            client.BaseAddress = new Uri($"http://{jupyterOptions.Host}:{jupyterOptions.Port}");
+            // Add authentication token as query parameter for Jupyter API
+            client.DefaultRequestHeaders.Add("Authorization", $"token {jupyterOptions.Token}");
+        });
         services.AddKeyedTransient<IJupyterClient, JupyterClient>(key, (sp, _) =>
         {
             return new JupyterClient(sp.GetRequiredService<IHttpClientFactory>().CreateClient(key));

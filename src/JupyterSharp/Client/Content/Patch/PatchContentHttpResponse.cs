@@ -1,8 +1,8 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
-namespace JupyterSharp.Client.Content.Post;
+namespace JupyterSharp.Client.Content.Patch;
 
-public record PostContentHttpResponse
+public record PatchContentHttpResponse
 {
     [JsonPropertyName("name")]
     public required string Name { get; init; }

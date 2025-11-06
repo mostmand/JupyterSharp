@@ -3,8 +3,8 @@
 public record GetContentRequest
 {
     public required string Path { get; init; }
-    public required string Type { get; init; }
-    public required string Format { get; init; }
-    public bool ReturnContent { get; init; }
-    public int Hash { get; init; }
+    public string? Type { get; init; }
+    public string? Format { get; init; }
+    public bool Content { get; init; } = true;
+    public int? Hash { get; init; }
 }

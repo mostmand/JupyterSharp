@@ -4,6 +4,7 @@ public enum GetContentStatus
 {
     Ok,
     BadRequest,
+    Forbidden,
     NotFound,
     InternalServerError
 }

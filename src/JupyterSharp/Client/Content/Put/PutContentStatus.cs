@@ -2,7 +2,8 @@
 
 public enum PutContentStatus
 {
-    Created,
+    Ok,
     BadRequest,
+    Forbidden,
     NotFound
 }
